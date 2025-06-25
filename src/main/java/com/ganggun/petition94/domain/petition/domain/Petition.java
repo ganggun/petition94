@@ -1,5 +1,6 @@
 package com.ganggun.petition94.domain.petition.domain;
 
+import com.ganggun.petition94.global.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -12,10 +13,11 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "petitions")
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @EntityListeners(value = AuditingEntityListener.class)
-public class Petition {
+public class Petition extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -31,7 +33,4 @@ public class Petition {
     @NotNull
     @Column(columnDefinition = "TEXT")
     private String content;
-
-    @CreatedDate
-    private LocalDateTime createdAt;
 }
