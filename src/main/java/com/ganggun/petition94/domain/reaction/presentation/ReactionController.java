@@ -3,9 +3,7 @@ package com.ganggun.petition94.domain.reaction.presentation;
 import com.ganggun.petition94.domain.reaction.presentation.dto.ReactionReq;
 import com.ganggun.petition94.domain.reaction.service.ReactionService;
 import com.ganggun.petition94.global.common.dto.BaseResponse;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +12,17 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ReactionController {
 
-    private final ReactionService reactionService;
+    private final ReactionService  reactionService;
 
     @PostMapping("/upvote")
-    public ResponseEntity<BaseResponse<String>> upvote(@RequestBody ReactionReq req) {
-        return reactionService.upvote(req);
+    public ResponseEntity<BaseResponse<String>> upvote(@RequestBody ReactionReq req, @SessionAttribute(name = "userId", required = false) Long userId) {
+        reactionService.upvote(req, userId);
+        return BaseResponse.of("개추 성공");
     }
 
     @PostMapping(value = "/downvote")
-    public ResponseEntity<BaseResponse<String>> downvote(@RequestBody ReactionReq req) {
-        return reactionService.downvote(req);
+    public ResponseEntity<BaseResponse<String>> downvote(@RequestBody ReactionReq req, @SessionAttribute(name = "userId", required = false) Long userId) {
+        reactionService.downvote(req, userId);
+        return BaseResponse.of("비추 성공");
     }
 }
