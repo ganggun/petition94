@@ -14,7 +14,7 @@ import lombok.*;
 public class Reaction extends BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reactionId;
 
     @NotNull

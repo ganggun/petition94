@@ -29,7 +29,8 @@ public class ReactionService {
 
         Reaction reaction = Reaction.builder()
                 .userId(userId)
-                .petition(petitionRepository.findById(req.petitionId()).orElseThrow(() -> new CustomException(PetitionError.PETITION_NOT_FOUND)))
+                .petition(petitionRepository.findById(req.petitionId())
+                        .orElseThrow(() -> new CustomException(PetitionError.PETITION_NOT_FOUND)))
                 .type(1)
                 .build();
         reactionRepository.save(reaction);
