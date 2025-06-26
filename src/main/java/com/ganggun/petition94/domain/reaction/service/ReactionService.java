@@ -22,7 +22,6 @@ public class ReactionService {
     private final PetitionRepository petitionRepository;
     private final ReactionRepository reactionRepository;
 
-    @PostMapping("/upvote")
     public ResponseEntity<BaseResponse<String>> upvote(@RequestBody @Valid ReactionReq req) {
         Reaction reaction = Reaction.builder()
                 .userId(req.userId())
@@ -33,7 +32,6 @@ public class ReactionService {
         return BaseResponse.of("개추 성공");
     }
 
-    @PostMapping("/downvote")
     public ResponseEntity<BaseResponse<String>> downvote(@RequestBody @Valid ReactionReq req)
     {
         Reaction reaction = Reaction.builder()
