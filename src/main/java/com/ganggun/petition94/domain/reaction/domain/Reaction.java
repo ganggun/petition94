@@ -22,7 +22,7 @@ public class Reaction extends BaseEntity {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "petitiqon_id")
+    @JoinColumn(name = "petition_id")
     private Petition petition;
 
     @NotNull
