@@ -20,7 +20,7 @@ public class SwaggerConfig {
     public OpenAPI api() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Legacy")
+                        .title("petition 94")
                         .description("Legacy API Documentation")
                         .version("v0.0.?"))
                 .addSecurityItem(new SecurityRequirement().addList("Authorization"))
